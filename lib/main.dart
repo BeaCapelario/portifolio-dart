@@ -6,7 +6,6 @@ void main() {
   runApp(const MyMaterialApp());
 }
 
-// Classe MaterialApp
 class MyMaterialApp extends StatelessWidget {
   const MyMaterialApp({super.key});
 
@@ -52,9 +51,9 @@ class TelaInicial extends StatelessWidget {
                 Positioned(
                   bottom: -70,
                   child: Container(
-                    padding: EdgeInsets.all(3), // Espessura da borda
+                    padding: EdgeInsets.all(3),
                     decoration: BoxDecoration(
-                      color: Color(0XFFBAA9F1), // Cor da borda
+                      color: Color(0XFFBAA9F1),
                       shape: BoxShape.circle,
                     ),
                     child: CircleAvatar(

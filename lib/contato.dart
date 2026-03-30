@@ -19,9 +19,9 @@ class Contato extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color(0XFF736CEF),
       ),
-      body: Center(
-        child: (Column(children: [Image.asset('./assets/images/github.svg')])),
-      ),
+      body: Center(child: Column(
+        
+      )),
     );
   }
 }

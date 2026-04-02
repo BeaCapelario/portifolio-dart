@@ -3,14 +3,14 @@ import './components/carrossel.dart';
 import './components/joguinho.dart';
 
 class Projetos extends StatelessWidget {
-  const Projetos({super.key});
+  Projetos({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0XFFFEF9FF),
+      backgroundColor: Color(0XFFFEF9FF),
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Interaction Page",
           style: TextStyle(
             color: Color(0XFFD4C1EE),
@@ -19,28 +19,25 @@ class Projetos extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0XFF736CEF),
+        backgroundColor: Color(0XFF736CEF),
       ),
-      // Trocamos o Center + Column por um ListView
       body: ListView(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20,
-        ), // Espaçamento interno
+        padding: EdgeInsets.symmetric(vertical: 20),
         children: [
-          const Text(
+          Text(
             "My favs",
-            textAlign: TextAlign.center, // Centraliza o texto horizontalmente
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Color(0XFF4B2E85),
               fontSize: 35,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 20), // Substitui o 'spacing' da Column
+          SizedBox(height: 20),
 
           Carrossel(),
 
-          const Divider(
+          Divider(
             color: Color(0XFF736CEF),
             thickness: 1,
             height: 60,
@@ -48,7 +45,7 @@ class Projetos extends StatelessWidget {
             endIndent: 20,
           ),
 
-          const Text(
+          Text(
             "Mini Game",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -60,6 +57,17 @@ class Projetos extends StatelessWidget {
 
           Joguinho(),
         ],
+      ),
+      // Adicionado o rodapé aqui:
+      bottomNavigationBar: Container(
+        height: 60,
+        color: Color(0xFF736CEF),
+        child: Center(
+          child: Text(
+            "© 2026 Beatriz Capelario - Desenvolvido em Flutter",
+            style: TextStyle(color: Color(0XFFD4C1EE)),
+          ),
+        ),
       ),
     );
   }

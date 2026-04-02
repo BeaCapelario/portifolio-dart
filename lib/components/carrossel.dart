@@ -21,7 +21,7 @@ class Carrossel extends StatelessWidget {
         autoPlay: true,
         enlargeCenterPage: true,
         viewportFraction: 0.8,
-        autoPlayInterval: const Duration(seconds: 3),
+        autoPlayInterval: Duration(seconds: 3),
         autoPlayCurve: Curves.fastOutSlowIn,
       ),
       items: imagens.map((url) {
@@ -33,10 +33,10 @@ class Carrossel extends StatelessWidget {
             width: double.infinity,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress == null) return child;
-              return const Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
             },
             errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.error, color: Colors.red),
+                Icon(Icons.error, color: Colors.red),
           ),
         );
       }).toList(),

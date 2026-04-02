@@ -11,29 +11,30 @@ class _JoguinhoState extends State<Joguinho> {
   Color _corAtual = Colors.grey;
   bool _foiAceito = false;
 
+  void _resetarJogo() {
+    setState(() {
+      _corAtual = Colors.grey;
+      _foiAceito = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Garantindo que o Draggable envie uma Color
         Draggable<Color>(
-          data: Colors.blue,
-          // O segredo está aqui: o Feedback precisa de 'Material' para renderizar corretamente
+          data: Color(0XFFD3FF83),
           feedback: Material(
             color: Colors.transparent,
             child: Container(
               height: 100,
               width: 100,
               decoration: BoxDecoration(
-                color: Colors.blue.withValues(alpha: 0.5),
+                color: Color.fromARGB(255, 163, 104, 252),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(
-                Icons.directions_run,
-                color: Colors.white,
-                size: 50,
-              ),
+              child: Icon(Icons.directions_run, color: Colors.white, size: 50),
             ),
           ),
           childWhenDragging: Container(
@@ -48,12 +49,12 @@ class _JoguinhoState extends State<Joguinho> {
             height: 100,
             width: 100,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Color(0XFFD6BBFE),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Center(
+            child: Center(
               child: Text(
-                "Arraste-me",
+                "Arraste",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -63,14 +64,13 @@ class _JoguinhoState extends State<Joguinho> {
           ),
         ),
 
-        const SizedBox(height: 30),
+        SizedBox(height: 30),
 
-        // Garantindo que o DragTarget espere uma Color
         DragTarget<Color>(
           onWillAcceptWithDetails: (details) => true,
           onAcceptWithDetails: (details) {
             setState(() {
-              _corAtual = details.data; // Pega a cor que veio do Draggable
+              _corAtual = details.data;
               _foiAceito = true;
             });
           },
@@ -79,10 +79,9 @@ class _JoguinhoState extends State<Joguinho> {
               height: 150,
               width: 150,
               decoration: BoxDecoration(
-                color: _foiAceito ? _corAtual : Colors.red.shade200,
+                color: _foiAceito ? _corAtual : Color(0XFFFF8CCF),
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
-                  // Mostra uma borda azul quando o item estiver em cima
                   color: candidateData.isNotEmpty
                       ? Colors.blue
                       : Colors.transparent,
@@ -92,11 +91,23 @@ class _JoguinhoState extends State<Joguinho> {
               child: Center(
                 child: Text(
                   _foiAceito ? "Sucesso!" : "Solte aqui",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             );
           },
+        ),
+
+        SizedBox(height: 40),
+        ElevatedButton.icon(
+          onPressed: _resetarJogo,
+          icon: Icon(Icons.refresh),
+          label: Text("Resetar Jogo"),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0XffACDFFE),
+            foregroundColor: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          ),
         ),
       ],
     );

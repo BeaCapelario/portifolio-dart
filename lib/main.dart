@@ -117,7 +117,7 @@ class TelaInicial extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Projetos()),
                       );
                     },
-                    child: Text("Projetos"),
+                    child: Text("Interação"),
                   ),
                 ],
               ),
